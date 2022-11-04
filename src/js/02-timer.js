@@ -30,6 +30,9 @@ const options = {
       timer = setInterval(() => {
         const now = new Date();
         const diff = selectedDates - now;
+        if (diff < 1000) {
+          clearInterval(timer);
+        }
         const total = convertMs(diff);
         finalTime(total);
       }, 1000);

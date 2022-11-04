@@ -8,17 +8,18 @@ const btnStop = document.querySelector('[data-stop]');
 
 let timerId = null;
 
+function randomHexColor() {
+  bodyEl.style.backgroundColor = getRandomHexColor();
+}
+
 btnStart.addEventListener('click', () => {
-  timerId = setInterval(() => {
-    bodyEl.style.backgroundColor = getRandomHexColor();
-    btnStart.disabled = true;
-    btnStop.disabled = false;
-  }, 1000);
+  timerId = setInterval(randomHexColor, 1000);
+  btnStart.disabled = true;
+  btnStop.disabled = false;
 });
 
 btnStop.addEventListener('click', () => {
   clearInterval(timerId);
-  bodyEl.style.backgroundColor = getRandomHexColor();
   btnStop.disabled = true;
   btnStart.disabled = false;
 });
