@@ -10,7 +10,7 @@ const dataMinutes = document.querySelector('[data-minutes]');
 const dataSeconds = document.querySelector('[data-seconds]');
 
 btnStart.disabled = true;
-let timer = null;
+let timer = 0;
 
 const options = {
   enableTime: true,
@@ -28,11 +28,9 @@ const options = {
 
     btnStart.addEventListener('click', () => {
       timer = setInterval(() => {
-        const calculationTime = selectedDates - new Date();
-        if (calculationTime <= 0) {
-          clearInterval(timer);
-        }
-        const total = convertMs(calculationTime);
+        const now = new Date();
+        const diff = selectedDates - now;
+        const total = convertMs(diff);
         finalTime(total);
       }, 1000);
     });

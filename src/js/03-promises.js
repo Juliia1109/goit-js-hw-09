@@ -10,8 +10,8 @@ function onSubmit(evt) {
   let step = Number(formElement.step.value);
   let amount = Number(formElement.amount.value);
 
-  for (let position = 1; position <= amount; position++) {
-    createPromise(position, delay)
+  for (let index = 1; index <= amount; index++) {
+    createPromise(index, delay)
       .then(({ position, delay }) => {
         setTimeout(() => {
           Notiflix.Notify.success(
